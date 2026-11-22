@@ -13,9 +13,9 @@ localStorage.task != null
 
 function addTask() {
   if (title.value.trim() === "") {
-    error.innerHTML = "task title can not be empty";
+    error.textContent = "task title can not be empty";
   } else {
-    error.innerHTML = "";
+    error.textContent = "";
     let newTask = {
       id: crypto.randomUUID(),
       title: title.value,
