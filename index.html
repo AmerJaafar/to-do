@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <header>
+          <h1>tasks managment system</h1>
+        </header>
+      </div>
+      <div class="form-container">
+        <input type="text" id="title" class="title" placeholder="title" />
+        <p id="error" class="error"></p>
+        <textarea
+          id="descreption"
+          class="descreption"
+          placeholder="descreption"
+        ></textarea>
+        <button id="submit" class="submit" type="submit">submit</button>
+      </div>
+      <div class="table">
+        <p class="hidden" id="massege"></p>
+        <table class="" id="table">
+          <tr>
+            <th>title</th>
+            <th>descreption</th>
+            <th>status</th>
+            <th></th>
+            <th></th>
+          </tr>
+          <tbody id="t-body">
+            
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <script src="./test.js"></script>
+  </body>
+</html>
