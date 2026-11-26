@@ -62,3 +62,6 @@ th , td {
 .hidden {
    display: none;
 }
+.delete {
+    background: red;
+}
