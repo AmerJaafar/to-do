@@ -1,9 +1,9 @@
 let title = document.getElementById("title");
-let decreption = document.getElementById("descreption");
+let descreption = document.getElementById("descreption");
 let submit = document.getElementById("submit");
 let error = document.getElementById("error");
 let table = document.getElementById("table");
-let massege = document.getElementById("massege");
+let message = document.getElementById("message");
 let tBody = document.getElementById("t-body");
 
 let tasks;
@@ -19,7 +19,7 @@ function addTask() {
     let newTask = {
       id: crypto.randomUUID(),
       title: title.value,
-      decreption: decreption.value,
+      descreption: descreption.value,
       status: "todo",
     };
     tasks.push(newTask);
@@ -33,11 +33,11 @@ submit.addEventListener("click", addTask);
 function showTasks() {
   tBody.replaceChildren();
   if (tasks.length == 0) {
-    massege.classList.remove("hidden");
+    message.classList.remove("hidden");
     table.classList.add("hidden");
-    massege.textContent = "no tasks available to show";
+    message.textContent = "no tasks available to show";
   } else {
-    massege.classList.add("hidden");
+    message.classList.add("hidden");
     table.classList.remove("hidden");
 
     for (let i = 0; i < tasks.length; i++) {
@@ -46,7 +46,7 @@ function showTasks() {
       const tdTitle = document.createElement("td");
       tdTitle.textContent = tasks[i].title;
       const tdDesc = document.createElement("td");
-      tdDesc.textContent = tasks[i].decreption;
+      tdDesc.textContent = tasks[i].descreption;
       const tdStatus = document.createElement("td");
       tdStatus.textContent = tasks[i].status;
       const tdDelete = document.createElement("td");
@@ -75,7 +75,7 @@ function showTasks() {
 }
 function clearInputs() {
   title.value = "";
-  decreption.value = "";
+  descreption.value = "";
 }
 showTasks();
 
@@ -83,11 +83,18 @@ function deleteTask(id) {
   const foundIndex = tasks.findIndex(function (item) {
     return item.id === id;
   });
-  if (foundIndex != -1) {
-    tasks.splice(foundIndex, 1);
-    localStorage.setItem("task", JSON.stringify(tasks));
+  if (foundIndex === -1) {
+    alert("not found task");
+  } else {
+    let confrim = confirm("are you sure you want to delete?");
+    if (confrim === true) {
+      tasks.splice(foundIndex, 1);
+      localStorage.setItem("task", JSON.stringify(tasks));
+      showTasks();
+    } else {
+      return;
+    }
   }
-  showTasks();
 }
 function updateTask(id) {
   console.log(id);
